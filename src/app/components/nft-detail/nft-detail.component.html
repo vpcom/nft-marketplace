@@ -1,0 +1,53 @@
+<div class="nft-detail" *ngIf="nft">
+  <button mat-icon-button (click)="goBack()" class="back-button">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <mat-card class="detail-card">
+    <div class="image-container">
+      <img [src]="nft.image" [alt]="nft.title" class="nft-image" />
+    </div>
+
+    <mat-card-content>
+      <h1>{{ nft.title }}</h1>
+      <p class="description">{{ nft.description }}</p>
+
+      <div class="info-section">
+        <div class="info-item">
+          <strong>Owner:</strong>
+          <span class="address">{{ nft.owner }}</span>
+        </div>
+        <div class="info-item">
+          <strong>Price:</strong>
+          <span class="price">{{ nft.price }} MATIC</span>
+        </div>
+        <div class="info-item">
+          <strong>Token ID:</strong>
+          <span>{{ nft.id }}</span>
+        </div>
+      </div>
+
+      <div class="attributes" *ngIf="nft.attributes && nft.attributes.length > 0">
+        <h3>Attributes</h3>
+        <mat-chip-set>
+          <mat-chip *ngFor="let attr of nft.attributes">
+            {{ attr.trait_type }}: {{ attr.value }}
+          </mat-chip>
+        </mat-chip-set>
+      </div>
+
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="buyNft()">
+          Buy for {{ nft.price }} MATIC
+        </button>
+        <button mat-stroked-button (click)="makeOffer()">
+          Make Offer
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="!nft" class="loading">
+  <p>Loading NFT details...</p>
+</div>
