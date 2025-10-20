@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as NftActions from './nft.actions';
-import { Nft } from '../../core/models/nft.model'; // or NftModel
+import { Nft } from '../../core/models/nft.model';
 
 export interface NftState {
   list: Nft[];

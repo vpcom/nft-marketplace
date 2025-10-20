@@ -36,7 +36,7 @@ export class GraphQLService {
           (res.data?.nfts ?? [])
             // filter out undefined values
             .filter((nft): nft is Nft => nft !== undefined && nft !== null)
-            // cast each partial safely to Nft (since your backend returns full NFTs)
+            // cast each partial safely to Nft
             .map((nft) => nft as Nft)
         )
       );

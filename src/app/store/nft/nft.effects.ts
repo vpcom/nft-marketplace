@@ -4,7 +4,6 @@ import * as NftActions from './nft.actions';
 import { GraphQLService } from '../../core/services/graphql.service';
 import { of, Observable } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { Action } from '@ngrx/store';
 
 @Injectable()
 export class NftEffects {
@@ -26,39 +25,6 @@ export class NftEffects {
       )
     );
   }
-
-  // constructor(private actions$: Actions, private graphql: GraphQLService) {
-  //   console.log('Actions injected:', actions$);
-  //   console.log('GraphQLService injected:', graphql);
-  // }
-  // loadNfts$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(NftActions.loadNfts),
-  //     mergeMap(() =>
-  //       this.graphql.getNfts().pipe(
-  //         map((nfts) => NftActions.loadNftsSuccess({ nfts })),
-  //         catchError((error) => of(NftActions.loadNftsFailure({ error })))
-  //       )
-  //     )
-  //   )
-  // );
-
-  // loadNfts$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(NftActions.loadNfts),
-  //     mergeMap(() => {
-  //       // Use real service if available, otherwise fall back to empty array
-  //       const source$: Observable<any> = (this.graphql && typeof this.graphql.getNfts === 'function')
-  //         ? this.graphql.getNfts() || of([] as any[])
-  //         : of([] as any[]);
-
-  //       return source$.pipe(
-  //         map((nfts: any) => NftActions.loadNftsSuccess({ nfts: nfts ?? [] })),
-  //         catchError((error) => of(NftActions.loadNftsFailure({ error })))
-  //       );
-  //     })
-  //   )
-  // );
 
   // buyNft$ = createEffect(() =>
   //   this.actions$.pipe(

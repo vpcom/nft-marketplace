@@ -15,7 +15,6 @@ export function createApollo(httpLink: HttpLink) {
 
 @NgModule({
   imports: [HttpClientModule],
-  // exports: [HttpClientModule],
   providers: [
     {
       provide: APOLLO_OPTIONS,
