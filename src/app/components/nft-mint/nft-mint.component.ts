@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { NgIf } from '@angular/common';
+import { GraphQLService } from '../../core/services/graphql.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nft-mint',
@@ -28,7 +30,7 @@ export class NftMintComponent {
   mintForm: FormGroup;
   selectedFile: File | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private gql: GraphQLService, private router: Router) {
     this.mintForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
@@ -39,9 +41,11 @@ export class NftMintComponent {
   onSubmit() {
     if (this.mintForm.valid) {
       const formData = this.mintForm.value;
-      alert(`Minting NFT: ${formData.name} for ${formData.price} MATIC`);
-      // In real app, this would call a service to mint the NFT
-      this.mintForm.reset();
+      const imagePath = this.selectedFile ? this.selectedFile.name : './placeholder.png';
+      this.gql.mintNft(formData.name, formData.description, Number(formData.price), imagePath).subscribe((nft) => {
+        // navigate to the new NFT detail page
+        this.router.navigate(['/nft', nft.id]);
+      });
     }
   }
 

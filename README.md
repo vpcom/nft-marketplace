@@ -1,6 +1,7 @@
 # NftMarketplace
 
-This project was generated using Angular 20, NgRx for state management and Apollo for GraphQL.
+This project uses Angular 20, NgRx for state management and Apollo for GraphQL.
+A mock Apollo GraphQL server provides the data.
 
 <table>
   <tr>
@@ -15,13 +16,18 @@ This project was generated using Angular 20, NgRx for state management and Apoll
   </tr>
 </table>
 
+## Mock GraphQL server
 
-## Development server
+```bash
+npx nodemon --watch mock-server mock-server/mock-server.js
+```
+-> `http://localhost:4000/graphql`
 
-To start a local development server, run:
+## Angular dev server
 
 ```bash
 ng serve
 ```
--> `http://localhost:4200/`
-automatically reloads
+->  `http://localhost:4200/`
+
+

@@ -1,12 +1,15 @@
 {
   "name": "nft-marketplace",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "mock:dev": "nodemon --config nodemon.json",
+    "ng:serve": "ng serve"
   },
   "prettier": {
     "printWidth": 100,
@@ -33,6 +36,9 @@
     "@angular/platform-browser-dynamic": "^20.3.6",
     "@angular/router": "^20.3.0",
     "@apollo/client": "^4.0.7",
+    "@apollo/server": "^5.0.0",
+    "@graphql-tools/mock": "^9.0.25",
+    "@graphql-tools/schema": "^10.0.25",
     "@ngrx/effects": "^20.0.1",
     "@ngrx/entity": "^20.0.1",
     "@ngrx/store": "^20.0.1",
@@ -55,6 +61,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "nodemon": "^3.1.10",
     "typescript": "~5.9.2"
   }
 }
